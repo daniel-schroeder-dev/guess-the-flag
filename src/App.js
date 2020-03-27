@@ -10,6 +10,7 @@ function App() {
       <h1 className="app__title">Guess The Flag!</h1>
       <img src="https://restcountries.eu/data/afg.svg" alt="flag of Afganistan" />
       <RadioButtons />
+      <button className="app__guess-btn" type="button" >Guess</button>
     </main>
   );
 }
