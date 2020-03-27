@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './RadioButtons.css';
 
 function RadioButtons(props) {
@@ -44,4 +46,14 @@ function RadioButtons(props) {
   );
 }
 
+RadioButtons.propTypes = {
+  flags: PropTypes.arrayOf(PropTypes.object),
+}
+
 export default RadioButtons;
+
+
+
+
+
+

@@ -9,7 +9,6 @@ function App() {
   const [flags, setFlags] = useState([]);
   const apiUrl = 'https://restcountries.eu/rest/v2/all?fields=name;flag;';
 
-
   const getRandomNumbers = () => {
 
     const randNums = [];
@@ -29,12 +28,12 @@ function App() {
 
   };
 
-  const getRandomFlags = flags => {
-    const randNums = getRandomNumbers();
-    return [flags[randNums[0]], flags[randNums[1]], flags[randNums[2]], flags[randNums[3]]];
-  };
-
   useEffect(() => {
+
+    const getRandomFlags = flags => {
+      const randNums = getRandomNumbers();
+      return [flags[randNums[0]], flags[randNums[1]], flags[randNums[2]], flags[randNums[3]]];
+    };
 
     fetch(apiUrl)
       .then(res => res.json())
@@ -49,10 +48,10 @@ function App() {
     <main className="app">
       <h1 className="app__title">Guess The Flag!</h1>
       <figure className="app__flag-img-wrapper">
-        <img className="app__flag-img" src="https://restcountries.eu/data/afg.svg" alt="flag of Afganistan" />
+        {flags.length ? <img className="app__flag-img" src={flags[0].flag} alt="flag of Afganistan" /> : 'Loading...'}
       </figure>
       <form className="app__guess-flag-form">
-        <RadioButtons />
+        <RadioButtons flags={flags} />
         <button className="app__guess-btn" type="submit" >Guess</button>
       </form>
     </main>
