@@ -10,8 +10,12 @@ body {
   color: #222;
 }
 
-.cntr {
-  margin: auto;
+.radio-buttons {
+  margin: 32px;
+}
+
+.radio-buttons__option-name {
+  margin-left: 12px;
 }
 
 .btn-radio {
