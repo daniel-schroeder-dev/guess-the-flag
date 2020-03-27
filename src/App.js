@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import RadioButtons from './components/RadioButtons/RadioButtons';
 
@@ -8,6 +8,7 @@ function App() {
 
   const [flags, setFlags] = useState([]);
   const [answerFlag, setAnswerFlag] = useState({});
+  const formEl = useRef(null);
 
   const apiUrl = 'https://restcountries.eu/rest/v2/all?fields=name;flag;';
 
@@ -49,13 +50,19 @@ function App() {
 
   }, []);
 
+  const handleUserGuess = e => {
+    e.preventDefault();
+    var data = new FormData(formEl.current);
+    console.log(data.get('flags') === answerFlag.name);
+  };
+
   return (
     <main className="app">
       <h1 className="app__title">Guess The Flag!</h1>
       <figure className="app__flag-img-wrapper">
-        {flags.length ? <img className="app__flag-img" src={flags[0].flag} alt={`The flag of ${flags[0].name}`} /> : 'Loading...'}
+        {flags.length ? <img className="app__flag-img" src={answerFlag.flag} alt={`The flag of ${answerFlag.name}`} /> : 'Loading...'}
       </figure>
-      <form className="app__guess-flag-form">
+      <form ref={formEl} className="app__guess-flag-form" onSubmit={handleUserGuess}>
         <RadioButtons flags={flags} />
         <button className="app__guess-btn" type="submit" >Guess</button>
       </form>

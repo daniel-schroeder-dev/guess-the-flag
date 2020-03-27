@@ -10,7 +10,7 @@ function RadioButtons(props) {
       {props.flags.map((flag, i) => (
 
         <label key={flag.name} htmlFor={`"rdo-${i}"`} className="btn-radio">
-          <input type="radio" id={`"rdo-${i}"`} name="radio-grp" />
+          <input type="radio" id={`"rdo-${i}"`} name="flags" value={flag.name} />
           <svg width="20px" height="20px" viewBox="0 0 20 20">
             <circle cx="10" cy="10" r="9"></circle>
             <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" className="inner"></path>
