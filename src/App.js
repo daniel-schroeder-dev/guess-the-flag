@@ -7,6 +7,8 @@ import './App.css';
 function App() {
 
   const [flags, setFlags] = useState([]);
+  const [answerFlag, setAnswerFlag] = useState({});
+
   const apiUrl = 'https://restcountries.eu/rest/v2/all?fields=name;flag;';
 
   const getRandomNumbers = (maxNum, numRandNums) => {
@@ -28,18 +30,20 @@ function App() {
 
   useEffect(() => {
 
-    const NUM_RAND_NUMS = 4;
     const TOTAL_NUM_FLAGS = 250;
+    const NUM_RAND_FLAGS = 4;
 
     const getRandomFlags = flags => {
-      const randNums = getRandomNumbers(TOTAL_NUM_FLAGS, NUM_RAND_NUMS);
+      const randNums = getRandomNumbers(TOTAL_NUM_FLAGS, NUM_RAND_FLAGS);
       return [flags[randNums[0]], flags[randNums[1]], flags[randNums[2]], flags[randNums[3]]];
     };
 
     fetch(apiUrl)
       .then(res => res.json())
       .then(flags => {
-        setFlags(getRandomFlags(flags));
+        const randomFlags = getRandomFlags(flags);
+        setFlags(randomFlags);
+        setAnswerFlag(randomFlags[Math.floor(Math.random() * NUM_RAND_FLAGS)]);
       })
       .catch(err => console.error(err));
 
