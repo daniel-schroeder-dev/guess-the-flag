@@ -9,14 +9,12 @@ function App() {
   const [flags, setFlags] = useState([]);
   const apiUrl = 'https://restcountries.eu/rest/v2/all?fields=name;flag;';
 
-  const getRandomNumbers = () => {
+  const getRandomNumbers = (maxNum, numRandNums) => {
 
     const randNums = [];
-    const NUM_RAND_NUMS = 4;
-    const TOTAL_NUM_FLAGS = 250;
 
-    for (let i = 0; i < NUM_RAND_NUMS; i++) {
-      let randNum = Math.floor(Math.random() * TOTAL_NUM_FLAGS);
+    for (let i = 0; i < numRandNums; i++) {
+      let randNum = Math.floor(Math.random() * maxNum);
       if (randNums.includes(randNum)) {
         --i;
         continue;
@@ -30,8 +28,11 @@ function App() {
 
   useEffect(() => {
 
+    const NUM_RAND_NUMS = 4;
+    const TOTAL_NUM_FLAGS = 250;
+
     const getRandomFlags = flags => {
-      const randNums = getRandomNumbers();
+      const randNums = getRandomNumbers(TOTAL_NUM_FLAGS, NUM_RAND_NUMS);
       return [flags[randNums[0]], flags[randNums[1]], flags[randNums[2]], flags[randNums[3]]];
     };
 
@@ -48,7 +49,7 @@ function App() {
     <main className="app">
       <h1 className="app__title">Guess The Flag!</h1>
       <figure className="app__flag-img-wrapper">
-        {flags.length ? <img className="app__flag-img" src={flags[0].flag} alt="flag of Afganistan" /> : 'Loading...'}
+        {flags.length ? <img className="app__flag-img" src={flags[0].flag} alt={`The flag of ${flags[0].name}`} /> : 'Loading...'}
       </figure>
       <form className="app__guess-flag-form">
         <RadioButtons flags={flags} />

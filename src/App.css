@@ -16,11 +16,17 @@
 
 .app__flag-img-wrapper {
   margin: 0;
+  height: 300px;
+  display: flex;
+  align-items: center;
 }
 
 .app__flag-img {
-  width: 400px;
+  /*width: 400px;*/
+  max-height: 300px;
+  max-width: 400px;
   margin: 16px;
+  box-shadow: 2px 2px 12px -4px rgba(51,51,51,1);
 }
 
 .app__guess-flag-form {
