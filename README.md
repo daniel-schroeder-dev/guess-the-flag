@@ -4,7 +4,7 @@ A guessing game where a random country's flag is shown with 4 possible choices f
 
 ## Technical Notes
 
-- Simple React app that demonstrates lifecycle hooks, managing state, and making API requests.
+Simple React app that demonstrates lifecycle hooks, managing state, and making API requests.
 
 ## Demo
 
