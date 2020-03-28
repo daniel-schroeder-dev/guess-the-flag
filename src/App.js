@@ -17,8 +17,6 @@ function App() {
     userGuess: null,
   });
 
-  const apiUrl = 'https://restcountries.eu/rest/v2/all?fields=name;flag;';
-
   const getRandomNumbers = (maxNum, numRandNums) => {
 
     const randNums = [];
@@ -40,6 +38,8 @@ function App() {
     
     const TOTAL_NUM_FLAGS = 250;
     const NUM_RAND_FLAGS = 4;
+    
+    const apiUrl = 'https://restcountries.eu/rest/v2/all?fields=name;flag;';
 
     const getRandomFlags = flags => {
       const randNums = getRandomNumbers(TOTAL_NUM_FLAGS, NUM_RAND_FLAGS);
