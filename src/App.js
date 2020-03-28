@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import RadioButtons from './components/RadioButtons/RadioButtons';
+import ResultMessage from './components/ResultMessage/ResultMessage';
 
 import './App.css';
 
@@ -8,6 +9,7 @@ function App() {
 
   const [flags, setFlags] = useState([]);
   const [answerFlag, setAnswerFlag] = useState({});
+  const [isGuessing, setIsGuessing] = useState(true);
 
   const apiUrl = 'https://restcountries.eu/rest/v2/all?fields=name;flag;';
 
@@ -62,7 +64,7 @@ function App() {
         {flags.length ? <img className="app__flag-img" src={answerFlag.flag} alt={`The flag of ${answerFlag.name}`} /> : 'Loading...'}
       </figure>
       <form className="app__guess-flag-form" onSubmit={handleUserGuess}>
-        <RadioButtons flags={flags} />
+        {isGuessing ? <RadioButtons flags={flags} /> : <ResultMessage />}
         <button className="app__guess-btn" type="submit">Guess</button>
       </form>
     </main>
