@@ -36,8 +36,8 @@ function App() {
 
   };
 
-  useEffect(() => {
-
+  const fetchAndSetFlags = () => {
+    
     const TOTAL_NUM_FLAGS = 250;
     const NUM_RAND_FLAGS = 4;
 
@@ -54,7 +54,10 @@ function App() {
         setAnswerFlag(randomFlags[Math.floor(Math.random() * NUM_RAND_FLAGS)]);
       })
       .catch(err => console.error(err));
+    };
 
+  useEffect(() => {
+    fetchAndSetFlags();
   }, []);
 
   const handleUserGuess = e => {
@@ -68,6 +71,16 @@ function App() {
     });
   };
 
+  const handleResetGame = () => {
+    setIsGuessing(true);
+    setResult({
+      result: null,
+      guess: null,
+    });
+    setFlags([]);
+    fetchAndSetFlags();
+  };
+
   return (
     <main className="app">
       <h1 className="app__title">Guess The Flag!</h1>
@@ -76,7 +89,7 @@ function App() {
       </figure>
       <form className="app__guess-flag-form" onSubmit={handleUserGuess}>
         {isGuessing ? <RadioButtons flags={flags} /> : <ResultMessage result={result} answerFlag={answerFlag} />}
-        {isGuessing ? <GameSubmitButton /> : <PlayAgainButton />}
+        {isGuessing ? <GameSubmitButton /> : <PlayAgainButton onClick={handleResetGame} />}
       </form>
     </main>
   );
