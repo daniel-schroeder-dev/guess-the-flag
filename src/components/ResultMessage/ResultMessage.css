@@ -1,0 +1,6 @@
+@media (max-width: 500px) {
+  .result-message {
+    max-width: 300px;
+    line-height: 25px;
+  }
+}

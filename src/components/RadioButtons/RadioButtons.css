@@ -22,6 +22,7 @@ body {
 
 .radio-buttons__option-name {
   margin-left: 12px;
+  max-width: 180px;
 }
 
 .btn-radio {
@@ -34,7 +35,7 @@ body {
 .btn-radio:not(:first-child) {
   margin-left: 20px;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 800px) {
   .btn-radio {
     display: block;
     float: none;
