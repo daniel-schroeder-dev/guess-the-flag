@@ -10,6 +10,7 @@ function App() {
   const [flags, setFlags] = useState([]);
   const [answerFlag, setAnswerFlag] = useState({});
   const [isGuessing, setIsGuessing] = useState(true);
+  const [result, setResult] = useState(false);
 
   const apiUrl = 'https://restcountries.eu/rest/v2/all?fields=name;flag;';
 
@@ -54,7 +55,8 @@ function App() {
   const handleUserGuess = e => {
     e.preventDefault();
     var data = new FormData(e.target);
-    console.log(data.get('flags') === answerFlag.name);
+    setIsGuessing(false);
+    setResult(data.get('flags') === answerFlag.name);
   };
 
   return (
@@ -64,7 +66,7 @@ function App() {
         {flags.length ? <img className="app__flag-img" src={answerFlag.flag} alt={`The flag of ${answerFlag.name}`} /> : 'Loading...'}
       </figure>
       <form className="app__guess-flag-form" onSubmit={handleUserGuess}>
-        {isGuessing ? <RadioButtons flags={flags} /> : <ResultMessage />}
+        {isGuessing ? <RadioButtons flags={flags} /> : <ResultMessage result={result}/>}
         <button className="app__guess-btn" type="submit">Guess</button>
       </form>
     </main>
