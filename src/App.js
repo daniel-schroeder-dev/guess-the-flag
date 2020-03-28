@@ -71,6 +71,7 @@ class App extends React.Component {
     e.preventDefault();
     var data = new FormData(e.target);
     const userGuess = data.get('flags');
+    if (!userGuess) return;
     this.setState(state => {
       return {
         isGuessing: false,
