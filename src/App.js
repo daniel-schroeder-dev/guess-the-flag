@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import RadioButtons from './components/RadioButtons/RadioButtons';
 import ResultMessage from './components/ResultMessage/ResultMessage';
+import GameSubmitButton from './components/GameSubmitButton/GameSubmitButton';
 
 import './App.css';
 
@@ -74,7 +75,7 @@ function App() {
       </figure>
       <form className="app__guess-flag-form" onSubmit={handleUserGuess}>
         {isGuessing ? <RadioButtons flags={flags} /> : <ResultMessage result={result} answerFlag={answerFlag} />}
-        <button className="app__guess-btn" type="submit">Guess</button>
+        <GameSubmitButton />
       </form>
     </main>
   );
