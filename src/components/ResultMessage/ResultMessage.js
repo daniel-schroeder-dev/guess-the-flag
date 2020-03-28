@@ -6,13 +6,14 @@ import './ResultMessage.css';
 function ResultMessage(props) {
   return (
     <React.Fragment>
-      {props.result ? <p>Congratulations!</p> : <p>Sorry</p>}
+      {props.result.result ? <p>Congratulations, {props.result.guess} is correct!</p> : <p>Sorry, {props.result.guess} is incorrect. The correct answer is {props.answerFlag.name}.</p>}
     </React.Fragment>
   );
 }
 
 ResultMessage.propTypes = {
-  result: PropTypes.bool.isRequired,
+  result: PropTypes.object.isRequired,
+  answerFlag: PropTypes.object.isRequired,
 };
 
 export default ResultMessage;
