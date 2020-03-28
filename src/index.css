@@ -15,3 +15,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+button {
+  outline: none;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
